@@ -1,0 +1,13 @@
+{
+    "name": "sympcheck",
+    "version": "1.0.0",
+    "description": "Symptom Checker App",
+    "main": "index.js",
+    "scripts": {
+      "start": "streamlit run app/pages/main.py"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {}
+  }
+  
