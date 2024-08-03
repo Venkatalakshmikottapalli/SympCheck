@@ -6,4 +6,4 @@ __pycache__/
 *.pyd
 env/
 *.env
-public/assets/queries.csv
+
