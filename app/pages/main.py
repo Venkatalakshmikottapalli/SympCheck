@@ -1,9 +1,16 @@
 # app/pages/main.py
 
+import sys
+import os
+
+# Add the parent directory to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import streamlit as st
-from app.utils.helper_functions import get_unique_symptoms, predict_disease
+from utils.helper_functions import get_unique_symptoms, predict_disease
 import pandas as pd
-from app.components.header import render_header
+from components.header import render_header
+
 
 # Load the dataset from CSV
 df = pd.read_csv('public/assets/queries.csv')
@@ -40,25 +47,36 @@ def main():
 
         # Function to add a new symptom input box with autocomplete
         def add_symptom_input():
+             # Create a mutable copy of unique symptoms to modify
+            available_symptoms = unique_symptoms.tolist()
+
+            # Remove symptoms that have already been selected
+            available_symptoms = [symptom for symptom in available_symptoms if symptom not in st.session_state.symptoms]
+
             selected_symptom = st.selectbox(
                 'Please choose your symptom here:',
-                [''] + unique_symptoms.tolist(),
+                [''] + available_symptoms,  # Use the filtered list of available symptoms
                 key=f'symptom_input_{len(st.session_state.symptoms)}'
             )
-            if selected_symptom and selected_symptom not in st.session_state.symptoms:
-                st.session_state.symptoms.append(selected_symptom)
-                st.session_state.conversation.append(('user', selected_symptom))
-                
-                # Update bot message based on the number of symptoms
-                if len(st.session_state.symptoms) == 1:
-                    st.session_state.conversation.append(('bot', 'Please enter your next symptom:'))
-                elif len(st.session_state.symptoms) < 10:
-                    st.session_state.conversation.append(('bot', 'Enter any extra symptoms you have, or press \'Submit\' to get your diagnosis.'))
-                else:
-                    st.session_state.conversation.append(('bot', 'Enter any extra symptoms you have, or press \'Submit\' to get your diagnosis.'))
-                
-                st.experimental_rerun()
+            if selected_symptom:
+                if selected_symptom not in st.session_state.symptoms:
+                    st.session_state.symptoms.append(selected_symptom)
+                    st.session_state.conversation.append(('user', selected_symptom))
+                    
+                    # Update bot message based on the number of symptoms
+                    if len(st.session_state.symptoms) == 1:
+                        st.session_state.conversation.append(('bot', 'Please enter your next symptom:'))
+                    elif len(st.session_state.symptoms) < 10:
+                        st.session_state.conversation.append(('bot', 'Enter any extra symptoms you have, or press \'Submit\' to get your diagnosis.'))
+                    else:
+                        st.session_state.conversation.append(('bot', 'You have reached the maximum number of symptoms. Please press \'Submit\' to get your diagnosis.'))
 
+                    st.rerun()  # Rerun to reflect the new state
+
+                else:
+                    # Update the conversation without rerunning the app
+                    st.session_state.conversation.append(('bot', 'You already selected this symptom. Please select a new symptom'))
+        
         # Display conversation
         conversation = st.session_state.conversation
         for i, (speaker, message) in enumerate(conversation):
@@ -68,8 +86,8 @@ def main():
                 st.markdown(f"<div class='user-message'>{message}</div>", unsafe_allow_html=True)
 
         # Add symptom input box if the limit of 10 symptoms has not been reached and not submitted
-        if len(st.session_state.symptoms) < 10 and not st.session_state.submitted:
-            add_symptom_input()
+        #if len(st.session_state.symptoms) < 10 and not st.session_state.submitted:
+         #   add_symptom_input()
 
         # Show submit button if there are at least two symptoms and prediction has not been made
         if len(st.session_state.symptoms) >= 2 and not st.session_state.prediction_made:
@@ -79,7 +97,7 @@ def main():
                     prediction = predict_disease(st.session_state.symptoms)
                     st.session_state.conversation.append(('bot', f'You might have: {prediction}'))
                     st.session_state.prediction_made = True
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     st.write('Please enter and select symptoms to predict.')
 
@@ -93,9 +111,12 @@ def main():
                 ]
                 st.session_state.submitted = False
                 st.session_state.prediction_made = False
-                st.experimental_rerun()
+                st.rerun()
 
         st.markdown('</div>', unsafe_allow_html=True)
+        # Add symptom input box if the limit of 10 symptoms has not been reached and not submitted
+        if len(st.session_state.symptoms) < 10 and not st.session_state.submitted:
+            add_symptom_input()
 
 if __name__ == '__main__':
     main()

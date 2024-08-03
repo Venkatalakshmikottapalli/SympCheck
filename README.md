@@ -19,6 +19,7 @@ Symp_check_UI_project/
 │ │ └── queries.csv
 ├── .gitignore
 ├── README.md
+├── requirements.txt
 
 
 ## How to Run
@@ -27,6 +28,8 @@ Symp_check_UI_project/
     ```sh
     pip install -r requirements.txt
     ```
+    set the path
+    $env:PYTHONPATH="$env:PYTHONPATH;."
 
 2. Start the application:
     ```sh
@@ -99,6 +102,7 @@ This project is licensed under the MIT License.
     a). Create a repository on GitHub.
     b). Add remote repository URL:
         git remote add origin https://github.com/yourusername/SympCheck.git
+        git remote add origin https://github.com/Venkatalakshmikottapalli/SympCheck.git
     c). Push local repository to GitHub:
         git push -u origin master
 ## Usage

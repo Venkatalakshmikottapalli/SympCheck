@@ -96,8 +96,9 @@ def render_header():
             }
         </style>
         <div class="header">
-            <div class="stethoscope">🩺</div>
-            <div class="sympcheck">SympCheck</div>
+            <div class="sympcheck">
+                S<span class="stethoscope">🩺</span>mpCheck
+            </div>
             <div class="your-health-mate">your health mate</div>
         </div>
     """, unsafe_allow_html=True)
