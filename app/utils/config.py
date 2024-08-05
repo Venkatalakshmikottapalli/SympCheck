@@ -1,3 +1,3 @@
 # app/utils/config.py
 
-API_URL = 'https://group3project-c9d59ac9d0fa.herokuapp.com'
+API_URL = 'https://sympcheck-pred-3edef3c3f5c7.herokuapp.com'
