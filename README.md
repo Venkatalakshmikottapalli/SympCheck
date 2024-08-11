@@ -16,42 +16,50 @@ SympCheck is a health diagnostic tool that identifies potential diseases based o
 
 ## 2. Design document
 
-Please refer to the [Design Document](development.md).
+Please refer to the [Design Document](docs\architecture.md).
 
 ## 3. Architecture document
 
-Please refer to the [Architecture Document](architecture.md).
+Please refer to the [Architecture Document](docs\architecture.md).
 
-## 3. Configuration
+## 4. Application Access
+
+Here, you can access the application without setup in your local machine.
+
+- **Sympcheck Production**: https://sympcheck-your-health-mate.streamlit.app/
+- **Sympcheck TestNet**: https://sympcheck-testnet.streamlit.app/
+
+
+## 5. Setup Instructions
+
+### 5.1. Configuration
 The API URL can be configured in `app/utils/config.py`.
 
-## 4. Setup Instructions
-
-### 4.1 Prerequisites
+### 5.2 Prerequisites
 - Python 3.7 or higher
 - Virtual environment (optional but recommended)
 - Streamlit
 
-### 4.2 Installation
+### 5.3 Installation
 
-**Streamlit Setup**
+- **Streamlit Setup**
 
 First setup the streamlit
 Follow the [Streamlit installation guide](https://docs.streamlit.io/get-started/installation/anaconda-distribution) to set up Streamlit using Anaconda distribution.
 
 
-**Clone the Repository:**
+- **Clone the Repository:**
 ```sh
 git clone https://github.com/yourusername/SympCheck.git
 cd SympCheck
 ```
-**Install the Required Dependencies:**
+- **Install the Required Dependencies:**
 
 ```sh
 pip install -r requirements.txt
 ```
 
-### 4.3. Run the Streamlit App:
+### 5.4. Run the Streamlit App:
 ```sh
 streamlit run app/pages/main.py
 ```
@@ -61,7 +69,7 @@ streamlit run app/pages/main.py
 $env:PYTHONPATH="$env:PYTHONPATH;."
 
 ```
-## 5. Usage
+## 6. Usage
 After setting up, you can access the SympCheck app in your web browser at http://localhost:8501.
 
 ![alt text](Sympcheck_UI_Screen.jpg)
