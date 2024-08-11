@@ -16,11 +16,11 @@ SympCheck is a health diagnostic tool that identifies potential diseases based o
 
 ## 2. Design document
 
-Please refer to the [Design Document](docs\architecture.md).
+Please refer to the [Design Document](..docs\architecture.md).
 
 ## 3. Architecture document
 
-Please refer to the [Architecture Document](docs\architecture.md).
+Please refer to the [Architecture Document](..docs\development).
 
 ## 4. Application Access
 
@@ -69,7 +69,13 @@ streamlit run app/pages/main.py
 $env:PYTHONPATH="$env:PYTHONPATH;."
 
 ```
-## 6. Usage
+## 6. Backend Project Setup
+
+Next setup the backend service
+Follow the [Backend installation setup](https://github.com/Venkatalakshmikottapalli/SympCheckBackend/blob/main/README.md)
+
+
+## 7. Usage
 After setting up, you can access the SympCheck app in your web browser at http://localhost:8501.
 
 ![alt text](Sympcheck_UI_Screen.jpg)
