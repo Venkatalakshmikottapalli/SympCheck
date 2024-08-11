@@ -63,7 +63,7 @@ Please refer to the [Module Building](SympCheckBackend/notebooks/model_building.
 The system loosely follows the MVC pattern, with the Streamlit app serving as the View, the Flask API as the Controller, and the NLP model/data as the Model.
 
 ### 3.2.1 Architecture Document Reference
-For a detailed description of the system architecture, please refer to the [SympCheck Architecture Document](docs\architecture.md).
+For a detailed description of the system architecture, please refer to the [SympCheck Architecture Document](architecture.md).
 
 ## 4. Implementation Strategy
 
