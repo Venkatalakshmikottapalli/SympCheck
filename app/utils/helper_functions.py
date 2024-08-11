@@ -10,10 +10,10 @@ def get_unique_symptoms(df):
 
 def predict_disease(symptoms):
     try:
-        # Manually create the JSON string
+        # create the JSON string
         symptoms_str = ', '.join(symptoms)
-        json_data = json.dumps({"symptoms": symptoms_str})  # Convert dictionary to JSON string
-        
+        # Convert dictionary to JSON string
+        json_data = json.dumps({"symptoms": symptoms_str})  
         # Send the request
         response = requests.post(API_URL, data=json_data, headers={"Content-Type": "application/json", "Accept": "application/json"})
         # Print the JSON string for debugging

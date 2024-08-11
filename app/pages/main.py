@@ -1,5 +1,6 @@
 # app/pages/main.py
 
+#import required libraries and functions
 import sys
 import os
 
@@ -115,3 +116,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
