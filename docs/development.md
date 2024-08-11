@@ -54,10 +54,10 @@ SympCheck is an intelligent chatbot designed to diagnose diseases based on user-
 - UI Pipeline: streamlit default pipeline 
 
 #### 3.1.4 Model
-- **Data Preparation**: Involves data acquisition, preprocessing, and feature extraction. Please refer to the [Exploratory Data analysis](SympCheckBackend/notebooks/EDA.ipynb)
+- **Data Preparation**: Involves data acquisition, preprocessing, and feature extraction. Please refer to the [Exploratory Data analysis](https://github.com/Venkatalakshmikottapalli/SympCheckBackend/blob/main/notebooks/EDA.ipynb)
 - **Model Training and Selection**: Models are trained and validated before deployment.
-Please refer to the [Module Building](SympCheckBackend/notebooks/model_building.ipynb)
-- **API Integration with Model**: Model is integrated with API. Please refer to the [Module Building](SympCheckBackend/api/main.py)
+Please refer to the [Module Building](https://github.com/Venkatalakshmikottapalli/SympCheckBackend/blob/main/notebooks/model_building.ipynb)
+- **API Integration with Model**: Model is integrated with API. Please refer to the [API Integration with Model](https://github.com/Venkatalakshmikottapalli/SympCheckBackend/blob/main/api/main.py)
 
 ### 3.2 Architecture Flow
 The system loosely follows the MVC pattern, with the Streamlit app serving as the View, the Flask API as the Controller, and the NLP model/data as the Model.
@@ -98,6 +98,7 @@ The project follows a structured directory layout to maintain organization and f
 #### 4.4.2 Backend Project Directory
 
 ![alt text](BE_Project_directory_strucutre1.png)
+
 ![alt text](BE_Project_directory_strucutre2.png)
 
 
