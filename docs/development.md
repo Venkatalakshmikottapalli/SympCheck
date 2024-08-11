@@ -73,7 +73,7 @@ For a detailed description of the system architecture, please refer to the [Symp
 - **Machine Learning**: Scikit-learn, Pandas, Logistic regression
 - **CI/CD**: GitHub, Heroku
 - **Platforms**: Heroku, Streamlit 
-- **Python**: Refer the [Python Libraries](requirements.txt)
+- **Python**: Refer to the [Python Libraries](../requirements.txt)
 
 ### 4.2 Development Workflow
 - **Version Control**: GitHub is used for version control and collaboration.
@@ -97,51 +97,54 @@ The project follows a structured directory layout to maintain organization and f
 
 #### 4.4.2 Backend Project Directory
 
-![alt text](BE_Project_directory_strucutre1.png)![alt text](BE_Project_directory_strucutre2.png)
+![alt text](BE_Project_directory_strucutre1.png)
+![alt text](BE_Project_directory_strucutre2.png)
 
 
 ### 4.5 Environments
 #### 4.5.1 Development Environment
 - **Local Setup**: Developers set up a local environment with necessary dependencies using the `requirements.txt` file. 
-Please refer to the [Local Setup Guide](README.md).
+Please refer to the [Local Setup Guide](../README.md).
 - **Tools**: Streamlit and Flask are run locally for development and Unit testing.
 
 #### 4.5.2 Testnet Environment
 - **Staging**: A separate staging environment mimics production for testing purposes.
+- **Staging URL**: https://sympcheck-testnet.streamlit.app/
 - **Automated Tests**: CI/CD pipelines automated for deploying to testnet environment.
 
 #### 4.5.3 Production Environment
-- **Deployment**: The application is deployed on Heroku for the backend and Streamlit for the frontend.
-- **Monitoring**: Continuous monitoring and logging are in place to ensure application performance and uptime.
+- **Production**: The application is deployed on Heroku for the backend and Streamlit for the frontend.
+- **Production URL**: https://sympcheck-your-health-mate.streamlit.app/
+- **Monitoring**: Continuous default monitoring in place to ensure application performance and uptime.
 
 ### 4.6 API Endpoints
 The following API endpoints are available in the SympCheck application:
 
-| Endpoint              | Method | Description                                          |
-|-----------------------|--------|------------------------------------------------------|
-| `/api/predict`        | POST   | Accepts user symptoms and returns predicted disease. |
-| `/api/symptoms`       | GET    | Returns a list of available symptoms for user input. |
+- **Production API URL**:'https://sympcheckbe-88b42835620c.herokuapp.com' 
+- **Testnet  API URL**:'https://sympcheckbetestnet-fffc66f498ef.herokuapp.com' 
+
+| Endpoint         | Method | Description                                      |
+|------------------|--------|--------------------------------------------------|
+| `/predict`       | POST   | Accepts symptoms and returns predicted disease.  |
+| `/`              | GET    | It provides the individual UI for API testing.   |
+
+
+#### 4.6.1. API Usage:
+
+![alt text](image-1.png)
 
 ## 5. Testing and Validation
 
 ### 5.1 Unit Testing
-Unit tests are written to validate the functionality of individual components.
+Unit tests are written to validate the functionality of individual components in local environment
 
-### 5.2 Integration Testing
-Integration tests ensure that different components work together as expected.
-
-### 5.3 User Acceptance Testing
-User acceptance tests are conducted to validate the system from the end-user perspective.
+### 5.2 Quality Assurance/ User Acceptance Testing
+QA and User acceptance tests are conducted to validate the system from the end-user perspective in the testnet environement.
 
 ## 6. Security and Privacy Considerations
-
-### 6.1 Data Security
-- **Encryption**: All data transmitted between the UI and backend is encrypted.
-- **Access Control**: API endpoints are protected to prevent unauthorized access.
-
-### 6.2 User Privacy
+### 6.1 User Privacy
 - **Data Minimization**: Only essential data is collected and processed.
-- **Compliance**: The system adheres to data privacy regulations, ensuring user data is handled securely.
+- **Compliance**: The system adheres to data privacy regulations, ensuring user data is not stored 
 
 ## 7. Conclusion
 This design document outlines the architecture, implementation strategy, testing, and security considerations for the SympCheck application. The structured approach ensures scalability, maintainability, and security in the system.
