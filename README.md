@@ -3,7 +3,7 @@
 SympCheck is a health diagnostic tool that identifies potential diseases based on user-provided symptoms.
 
 ## Project Structure
-
+```sh
 Symp_check_UI_project/
 ├── app/
 │ ├── components/
@@ -21,7 +21,7 @@ Symp_check_UI_project/
 ├── README.md
 ├── requirements.txt
 
-
+```
 ## How to Run
 
 1. Install dependencies:
