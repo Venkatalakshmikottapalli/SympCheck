@@ -11,6 +11,11 @@
    - 4.2 [Development Workflow](#42-development-workflow)
    - 4.3 [Deployment Process](#43-deployment-process)
    - 4.4 [Project Directory Structure](#44-project-directory-structure)
+   - 4.5 [Environments](#45-environments)
+     - 4.5.1 [Development Environment](#451-development-environment)
+     - 4.5.2 [Testing Environment](#452-testing-environment)
+     - 4.5.3 [Production Environment](#453-production-environment)
+   - 4.6 [API Endpoints](#46-api-endpoints)
 5. [Testing and Validation](#5-testing-and-validation)
    - 5.1 [Unit Testing](#51-unit-testing)
    - 5.2 [Integration Testing](#52-integration-testing)
@@ -44,35 +49,78 @@ SympCheck is an intelligent chatbot designed to diagnose diseases based on user-
 - **Deployment**: The Flask API and model are hosted on Heroku for scalability and reliability.
 
 #### 3.1.3 Continuous Integration/Continuous Deployment (CI/CD)
-- **GitHub**: Version control is managed via GitHub.
-- **CI/CD Pipeline**: Automated testing and deployment processes are implemented.
+- **CI/CD Pipeline**: Automated deployment processes are implemented separately for UI and Backend. Below are the pipelines
+- Backend Pipeline: sympcheckbepipeline
+- UI Pipeline: streamlit default pipeline 
 
 #### 3.1.4 Model
-- **Data Preparation**: Involves data acquisition, preprocessing, and feature extraction.
+- **Data Preparation**: Involves data acquisition, preprocessing, and feature extraction. Please refer to the [Exploratory Data analysis](SympCheckBackend/notebooks/EDA.ipynb)
 - **Model Training and Selection**: Models are trained and validated before deployment.
-- **Deployment**: Models are deployed alongside the Flask API.
+Please refer to the [Module Building](SympCheckBackend/notebooks/model_building.ipynb)
+- **API Integration with Model**: Model is integrated with API. Please refer to the [Module Building](SympCheckBackend/api/main.py)
 
 ### 3.2 Architecture Flow
 The system loosely follows the MVC pattern, with the Streamlit app serving as the View, the Flask API as the Controller, and the NLP model/data as the Model.
+
+### 3.2.1 Architecture Document Reference
+For a detailed description of the system architecture, please refer to the [SympCheck Architecture Document](docs\architecture.md).
 
 ## 4. Implementation Strategy
 
 ### 4.1 Technology Stack
 - **Frontend**: Streamlit
-- **Backend**: Flask
-- **Machine Learning**: Scikit-learn, Pandas
+- **Backend**: Flask, joblib
+- **Machine Learning**: Scikit-learn, Pandas, Logistic regression
 - **CI/CD**: GitHub, Heroku
+- **Platforms**: Heroku, Streamlit 
+- **Python**: Refer the [Python Libraries](requirements.txt)
 
 ### 4.2 Development Workflow
 - **Version Control**: GitHub is used for version control and collaboration.
-- **Branching Strategy**: Feature branches are used for development, with pull requests for code reviews.
+- **Branching Strategy**: Development and production branches are used to maintain the strategic environments for development and review.
+#### 4.2.1. Sympcheck UI
+- **Repository**: SympCheck
+- **Branches**: Here, we have 'master' and 'develop' branches used respectively for 'production' and testnet environments 
+#### 4.2.2. Sympcheck Backend
+- **Repository**: SympCheckBackend
+- **Branches**: Here, we have 'main' and 'develop' branches used respectively for 'production' and testnet environments 
 
 ### 4.3 Deployment Process
-- **CI/CD Pipeline**: Automated tests are run on each push to the repository, followed by automatic deployment to Streamlit (UI) and Heroku (backend).
+- **CI/CD Pipeline**: Automated deployment to Streamlit (UI) and Heroku (backend).
 
 ### 4.4 Project Directory Structure
 The project follows a structured directory layout to maintain organization and facilitate development:
 
+#### 4.4.1 UI Project Directory
+
+![alt text](image.png)
+
+#### 4.4.2 Backend Project Directory
+
+![alt text](BE_Project_directory_strucutre1.png)![alt text](BE_Project_directory_strucutre2.png)
+
+
+### 4.5 Environments
+#### 4.5.1 Development Environment
+- **Local Setup**: Developers set up a local environment with necessary dependencies using the `requirements.txt` file. 
+Please refer to the [Local Setup Guide](README.md).
+- **Tools**: Streamlit and Flask are run locally for development and Unit testing.
+
+#### 4.5.2 Testnet Environment
+- **Staging**: A separate staging environment mimics production for testing purposes.
+- **Automated Tests**: CI/CD pipelines automated for deploying to testnet environment.
+
+#### 4.5.3 Production Environment
+- **Deployment**: The application is deployed on Heroku for the backend and Streamlit for the frontend.
+- **Monitoring**: Continuous monitoring and logging are in place to ensure application performance and uptime.
+
+### 4.6 API Endpoints
+The following API endpoints are available in the SympCheck application:
+
+| Endpoint              | Method | Description                                          |
+|-----------------------|--------|------------------------------------------------------|
+| `/api/predict`        | POST   | Accepts user symptoms and returns predicted disease. |
+| `/api/symptoms`       | GET    | Returns a list of available symptoms for user input. |
 
 ## 5. Testing and Validation
 
