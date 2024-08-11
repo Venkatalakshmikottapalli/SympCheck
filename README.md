@@ -16,11 +16,11 @@ SympCheck is a health diagnostic tool that identifies potential diseases based o
 
 ## 2. Design document
 
-Please refer to the [Design Document](..docs\architecture.md).
+Please refer to the [Design Document](../docs/architecture.md).
 
 ## 3. Architecture document
 
-Please refer to the [Architecture Document](..docs\development).
+Please refer to the [Architecture Document](../docs/development.md).
 
 ## 4. Application Access
 
