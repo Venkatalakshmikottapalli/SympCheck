@@ -71,6 +71,4 @@ The dataset is sourced from **Kaggle's Heart Disease Health Indicators**.
 ```bash
 git clone https://github.com/yourusername/heart-risk-prediction.git
 cd heart-risk-prediction
-### Install the Required Dependencies:
-```bash
-pip install -r requirements.txt
+
