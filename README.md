@@ -1,74 +1,80 @@
-# Heart-Risk-Prediction README
+# SympCheck README
 
 ## Table of Contents
 1. [Overview](#1-overview)
-2. [Dataset](#2-dataset)
-3. [Methodology](#3-methodology)
-4. [Model Details](#4-model-details)
-5. [How to Run the Project](#5-how-to-run-the-project)
+2. [Design Document](#2-design-document)
+3. [Architecture Document](#3-architecture-document)
+4. [Configuration](#4-configuration)
+5. [Setup Instructions](#5-setup-instructions)
    - 5.1 [Prerequisites](#51-prerequisites)
    - 5.2 [Installation](#52-installation)
    - 5.3 [Run the Streamlit App](#53-run-the-streamlit-app)
-6. [API Deployment](#6-api-deployment)
-7. [UI Application](#7-ui-application)
-8. [Results](#8-results)
-9. [Contributing](#9-contributing)
-10. [License](#10-license)
+6. [Usage](#6-usage)
 
 ## 1. Overview
-**Heart Risk Prediction** is a machine learning-based tool designed to predict the likelihood of heart disease in individuals. By analyzing factors such as demographics, lifestyle choices, and medical history, the model can assist healthcare organizations in identifying high-risk patients and enabling early intervention.
+SympCheck is a health diagnostic tool that identifies potential diseases based on user-provided symptoms. The project leverages natural language processing (NLP) techniques combined with a machine learning model to deliver accurate predictions through a user-friendly interface built with Streamlit.
 
-## 2. Dataset
-The dataset contains health-related indicators, including:
-- **Demographics**: Age, gender, income, education level.
-- **Medical History**: High blood pressure, cholesterol, diabetes, stroke history.
-- **Lifestyle Factors**: Smoking, alcohol consumption, physical activity, diet (fruit and vegetable consumption).
-- **Self-Assessments**: General health, mental health, and physical health.
+## 2. Design document
 
-### Data Preprocessing:
-- Missing value imputation.
-- Addressing class imbalance using Random Over-Sampling.
-- Standard scaling for continuous variables.
-- One-hot and ordinal encoding for categorical variables.
+Please refer to the [sympcheck design document](docs/development.md).
 
-## 3. Methodology
+## 3. Architecture document
 
-### Data Collection:
-The dataset is sourced from **Kaggle's Heart Disease Health Indicators**.
+Please refer to the [sympcheck architecture Document](docs/architecture.md).
 
-### Data Preprocessing:
-- Handling missing data.
-- Normalization and encoding.
-- Feature selection based on Random Forest feature importance.
+## 4. Application Access
 
-### Model Development:
-- Models used: Naive Bayes, Logistic Regression, Decision Trees, Random Forest, Gradient Boosting, XGBoost, AdaBoost, and ANN.
-- Hyperparameter tuning was applied only to Random Forest and XGBoost for better performance.
+Here, you can access the application without setup in your local machine.
 
-### Evaluation Metrics:
-- Accuracy, Precision, Recall, F1 Score, ROC-AUC for model evaluation.
+- **Sympcheck Production**: https://sympcheck-your-health-mate.streamlit.app/
+- **Sympcheck TestNet**: https://sympcheck-testnet.streamlit.app/
 
-## 4. Model Details
 
-- **Best Model**: Random Forest.
-- **Performance Metrics**:
-  - Accuracy: **94.16%**
-  - ROC-AUC: **0.984**
-  
-- **Important Features**:
-  - BMI, Age, Mental Health, Physical Activity, General Health.
+## 5. Setup Instructions
 
-## 5. How to Run the Project
+### 5.1. Configuration
+The API URL can be configured in app/utils/config.py.
 
-### 5.1. Prerequisites
-- Python 3.7 or higher.
-- Virtual environment (recommended).
-- Required libraries listed in `requirements.txt`.
+### 5.2 Prerequisites
+- Python 3.7 or higher
+- Virtual environment (optional but recommended)
+- Streamlit
 
-### 5.2. Installation
+### 5.3 Installation
+
+- **Streamlit Setup**
+
+First setup the streamlit
+Follow the [Streamlit installation guide](https://docs.streamlit.io/get-started/installation/anaconda-distribution) to set up Streamlit using Anaconda distribution.
+
 
 - **Clone the Repository:**
-```bash
-git clone https://github.com/yourusername/heart-risk-prediction.git
-cd heart-risk-prediction
+sh
+git clone https://github.com/yourusername/SympCheck.git
+cd SympCheck
 
+- **Install the Required Dependencies:**
+
+sh
+pip install -r requirements.txt
+
+
+### 5.4. Run the Streamlit App:
+sh
+streamlit run app/pages/main.py
+
+- If you encounter a "module not found" error even after installing all the libraries from requirements.txt, set the Python path:
+
+sh
+$env:PYTHONPATH="$env:PYTHONPATH;."
+
+## 6. Backend Project Setup
+
+Next setup the backend service
+Follow the [Backend installation setup](https://github.com/Venkatalakshmikottapalli/SympCheckBackend/blob/main/README.md)
+
+
+## 7. Usage
+After setting up, you can access the SympCheck app in your web browser at http://localhost:8501.
+
+![alt text](Sympcheck_UI_Screen.jpg)
